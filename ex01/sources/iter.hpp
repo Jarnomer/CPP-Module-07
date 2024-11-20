@@ -2,8 +2,8 @@
 
 #include <cstddef>
 
-template <typename T, typename Func> void iter(T *arr, size_t len, Func fn) {
+template <typename T, typename F> void iter(T *arr, size_t len, F func) {
   for (size_t i = 0; i < len; ++i) {
-    fn(arr[i]);
+    func(arr[i]);
   }
 }
