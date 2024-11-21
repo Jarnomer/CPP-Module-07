@@ -8,7 +8,7 @@ private:
   unsigned int n; // size
 
 public: // default constructor
-  Array() : array(nullptr), n(0) {}
+  Array(void) : array(nullptr), n(0) {}
 
 public: // parametric constructor
   Array(unsigned int n) : array(new T[n]), n(n) {}
@@ -52,7 +52,7 @@ public: // subscript operator for const objects
   }
 
 public: // deconstructor
-  ~Array() { delete[] array; }
+  ~Array(void) { delete[] array; }
 
 public: // getters
   unsigned int size() const { return n; }
