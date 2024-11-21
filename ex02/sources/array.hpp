@@ -37,16 +37,18 @@ public: // subscript operator for non-const objects
   T &operator[](unsigned int index) {
     if (index >= n) {
       throw std::out_of_range("Index out of bounds");
+    } else {
+      return array[index];
     }
-    return array[index];
   }
 
 public: // subscript operator for const objects
   const T &operator[](unsigned int index) const {
     if (index >= n) {
       throw std::out_of_range("Index out of bounds");
+    } else {
+      return array[index];
     }
-    return array[index];
   }
 
 public: // deconstructor
