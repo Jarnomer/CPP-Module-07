@@ -1,0 +1,57 @@
+#pragma once
+
+#include <stdexcept>
+
+template <typename T> class Array {
+private:
+  T *array;
+  unsigned int n; // size
+
+public: // default constructor
+  Array() : array(nullptr), n(0) {}
+
+public: // parametric constructor
+  Array(unsigned int n) : array(new T[n]), n(n) {}
+
+public: // copy constructor
+  Array(const Array &other) : array(new T[other.n]), n(other.n) {
+    for (unsigned int i = 0; i < other.n; i++) {
+      this->array[i] = other.array[i];
+    }
+  }
+
+public: // copy assignment
+  Array &operator=(const Array &other) {
+    if (this != &other) {
+      this->n = other.n;
+      delete[] this->array;
+      this->array = new T[n];
+      for (unsigned int i = 0; i < n; i++) {
+        this->array[i] = other.array[i];
+      }
+    }
+    return *this;
+  }
+
+public: // subscript operator for non-const objects
+  T &operator[](unsigned int index) {
+    if (index >= n) {
+      throw std::out_of_range("Index out of bounds");
+    }
+    return array[index];
+  }
+
+public: // subscript operator for const objects
+  const T &operator[](unsigned int index) const {
+    if (index >= n) {
+      throw std::out_of_range("Index out of bounds");
+    }
+    return array[index];
+  }
+
+public: // deconstructor
+  ~Array() { delete[] array; }
+
+public: // getters
+  unsigned int size() const { return n; }
+};
