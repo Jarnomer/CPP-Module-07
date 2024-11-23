@@ -1,4 +1,4 @@
-#include <array.hpp>
+#include <Array.hpp>
 
 #include <iostream>
 #include <string>
@@ -21,17 +21,20 @@ int main(void) {
     players[1] = {89.0, "Bob"};
     players[2] = {76.3, "Charlie"};
 
+    std::cout << "\n";
     std::cout << "Original players\n";
     for (unsigned int i = 0; i < players.size(); ++i) {
       std::cout << players[i];
     }
 
+    std::cout << "\n";
     Array<Player> copiedPlayer(players);
     std::cout << "\nCopied players\n";
     for (unsigned int i = 0; i < copiedPlayer.size(); ++i) {
       std::cout << copiedPlayer[i];
     }
 
+    std::cout << "\n";
     Array<Player> assignedPlayers = players;
     std::cout << "\nAssigned players\n";
     for (unsigned int i = 0; i < assignedPlayers.size(); ++i) {

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <stdexcept>
 
 template <typename T> class Array {
@@ -8,13 +9,18 @@ private:
   unsigned int n; // size
 
 public: // default constructor
-  Array(void) : array(nullptr), n(0) {}
+  Array(void) : array(nullptr), n(0) {
+    std::cout << "Default constructor called\n";
+  }
 
 public: // parametric constructor
-  Array(unsigned int n) : array(new T[n]), n(n) {}
+  Array(unsigned int n) : array(new T[n]), n(n) {
+    std::cout << "Parametric constructor called\n";
+  }
 
 public: // copy constructor
   Array(const Array &other) : array(new T[other.n]), n(other.n) {
+    std::cout << "Copy constructor called\n";
     for (unsigned int i = 0; i < other.n; i++) {
       this->array[i] = other.array[i];
     }
@@ -22,6 +28,7 @@ public: // copy constructor
 
 public: // copy assignment
   Array &operator=(const Array &other) {
+    std::cout << "Copy assignment called\n";
     if (this != &other) {
       this->n = other.n;
       delete[] this->array;
